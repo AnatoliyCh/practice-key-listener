@@ -16,8 +16,8 @@ namespace AppWF
     public partial class MainForm : Form
     {
         private const string PATH = "data.xml";
-        private int secondsUpdateKeys = 2; // обновление информации про нажатые кнопки
-        private int secondsSaveFile = 3; // сохранение файла
+        private int secondsUpdateKeys = 10; // обновление информации про нажатые кнопки
+        private int secondsSaveFile = 60; // сохранение файла
         private Dictionary<string, int> keys = new Dictionary<string, int>(); // нажатые клавиши
         public MainForm(Dictionary<string, int> keys)
         {
