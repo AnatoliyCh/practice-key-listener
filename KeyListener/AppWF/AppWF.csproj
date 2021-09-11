@@ -7,7 +7,7 @@
     <ProjectGuid>{E9366634-8217-4E74-A9EB-59621E4AD3ED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>AppWF</RootNamespace>
-    <AssemblyName>AppWF</AssemblyName>
+    <AssemblyName>KeyListener</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
