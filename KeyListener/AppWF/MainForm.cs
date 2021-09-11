@@ -52,7 +52,23 @@ namespace AppWF
             SecUpdateKeys.Value = secondsUpdateKeys;
             SecSaveFile.Value = secondsSaveFile;
         }
-
+        // пятать в трей
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                NotifyIcon.Visible = true;
+            }
+        }
+        private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            NotifyIcon.Visible = false;
+        }
+        // при закрытии: сохранение
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e) => SaveFile();
         void SetConfig(XElement root)
         {
             var strSecondsUpdateButtons = root.Element("config").Attribute("secondsUpdateButtons").Value;
@@ -93,7 +109,7 @@ namespace AppWF
             if (keys is null) return;
             string[] lines = new string[keys.Count];
             int i = 0;
-            foreach (var item in keys)
+            foreach (var item in keys.OrderBy(key => key.Value).Reverse())
             {
                 lines[i] = $"{item.Key}: {item.Value}";
                 i++;
@@ -103,6 +119,6 @@ namespace AppWF
         private void SecUpdateKeys_ValueChanged(object sender, EventArgs e) => secondsUpdateKeys = (int)SecUpdateKeys.Value;
         private void SecSaveFile_ValueChanged(object sender, EventArgs e) => secondsSaveFile = (int)SecSaveFile.Value;
 
-        private void ButtonSave_Click(object sender, EventArgs e) => SaveFile();
+        private void ButtonSave_Click(object sender, EventArgs e) => SaveFile();        
     }
 }
