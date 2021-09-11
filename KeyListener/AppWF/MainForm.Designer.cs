@@ -29,6 +29,7 @@ namespace AppWF
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -40,6 +41,7 @@ namespace AppWF
             this.label1 = new System.Windows.Forms.Label();
             this.SecSaveFile = new System.Windows.Forms.NumericUpDown();
             this.SecUpdateKeys = new System.Windows.Forms.NumericUpDown();
+            this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -159,19 +161,28 @@ namespace AppWF
             this.SecUpdateKeys.TabIndex = 0;
             this.SecUpdateKeys.ValueChanged += new System.EventHandler(this.SecUpdateKeys_ValueChanged);
             // 
+            // NotifyIcon
+            // 
+            this.NotifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon.Icon")));
+            this.NotifyIcon.Text = "notifyIcon";
+            this.NotifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.NotifyIcon_MouseClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 561);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(400, 600);
             this.MinimumSize = new System.Drawing.Size(400, 600);
             this.Name = "MainForm";
             this.Text = "KeyListener";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -195,5 +206,6 @@ namespace AppWF
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ButtonSave;
+        private System.Windows.Forms.NotifyIcon NotifyIcon;
     }
 }
